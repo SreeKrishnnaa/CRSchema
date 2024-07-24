@@ -14,11 +14,28 @@ dotenv.config();  // Load environment variables
 const port = process.env.PORT || 3001;  // Ensure port is correctly set
 const app = express();
 
-// CORS configuration
+// // CORS configuration
+// const corsOptions = {
+//   origin: 'https://crschema-2.onrender.com/', // Allow requests from origin
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+// };
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://crschema.onrender.com'
+  'https://crschema-2.onrender.com'
+];
+
 const corsOptions = {
-  origin: 'https://crschema-2.onrender.com/', // Allow requests from origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOptions));  
