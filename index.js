@@ -20,25 +20,25 @@ const app = express();
 //   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
 //   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 // };
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://crschema.onrender.com'
-  'https://crschema-2.onrender.com'
-];
+// const allowedOrigins = [
+//   'http://localhost:3000',
+//   'https://crschema.onrender.com'
+//   'https://crschema-2.onrender.com'
+// ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// };
 
-app.use(cors(corsOptions));  
+app.use(cors());  
 app.use(bodyParser.json());
 
 
