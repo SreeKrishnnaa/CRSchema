@@ -16,7 +16,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://crschema.onrender.com/', // Allow requests from origin
+  origin: 'https://crschema-2.onrender.com/', // Allow requests from origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 };
